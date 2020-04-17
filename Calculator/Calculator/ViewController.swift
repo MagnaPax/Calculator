@@ -32,7 +32,22 @@ class ViewController: UIViewController {
         }
         
         
-
+        // 사용자가 키패드에 입력중이면 이미 레이블에 있는 값에 현재 입력된 값을 누적해서 레이블에 표시
+        if userIsInTheMiddleOfTyping {
+            if let textCurrentlyInDisplay = display.text {
+                display.text = textCurrentlyInDisplay + unwrappedTouchedKey
+            }
+            else {
+                fatalError("레이블에 아무것도 없음")
+            }
+        }
+        // 입력하는 도중이 아닌 처음 입력하는 경우는 입력값을 그대로 레이블에 출력
+        else {
+            display.text = unwrappedTouchedKey
+        }
+        
+        // touchKeypad(_:) 메소드는 키패드를 눌렀을 때 호출되므로 변수 값을 true로 바꿈
+        userIsInTheMiddleOfTyping = true
         
         
     }
