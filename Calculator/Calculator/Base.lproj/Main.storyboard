@@ -66,7 +66,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="touchKeypad:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9bi-P5-Ids"/>
+                                            <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HTG-ef-cCi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -118,7 +118,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="touchKeypad:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mJO-bE-7lA"/>
+                                            <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5mK-Pd-Eze"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -170,7 +170,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="touchKeypad:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qht-Jf-4cx"/>
+                                            <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lfe-76-75e"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -200,7 +200,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="touchKeypad:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Anx-bl-suS"/>
+                                            <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g22-Gt-OpX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yi-hD-ArS">
@@ -211,7 +211,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="touchKeypad:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RCn-Xl-1Xn"/>
+                                            <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7q7-6r-2KO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOk-jr-zMT">
@@ -222,7 +222,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="touchKeypad:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eoe-HH-ewb"/>
+                                            <action selector="performOperation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="60N-Hu-7pa"/>
                                         </connections>
                                     </button>
                                 </subviews>

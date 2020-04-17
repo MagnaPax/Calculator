@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var calculatedResult: [String?] = []
     private var unwrappedTouchedKey: String = ""
+    private var mathematicalSymbol: String = ""
     private let textCurrentlyInDisplay: String = ""
     private var userIsInTheMiddleOfTyping = false
     
@@ -53,6 +54,13 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func performOperation(_ sender: UIButton) {
+        if let touchedOperation = sender.currentTitle {
+            mathematicalSymbol = touchedOperation
+            display.text = mathematicalSymbol
+            
+        }
+    }
     
     
     
