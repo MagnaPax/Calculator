@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     
     
     //MARK: Actions
-    @IBAction func touchKeypad(_ sender: UIButton) {
+    @IBAction func touchDigit(_ sender: UIButton) {
         
         // 어떤 버튼 눌렸는지 찾기
         if let touchedKey = sender.currentTitle {
