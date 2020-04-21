@@ -88,11 +88,8 @@ class ViewController: UIViewController {
             brain.performOperation(operation: mathematicalOperation)
         }
         
-        
-//        if let touchedOperation = sender.currentTitle {
-//            mathematicalSymbol = touchedOperation
-//            displayLabel.text = mathematicalSymbol
-//        }
+        // 계산이 완료된 값을 디스플레이에 표시
+        valueInDisplay = brain.result
     }
     
     
