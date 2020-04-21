@@ -80,6 +80,7 @@ class ViewController: UIViewController {
         // 사용자가 숫자를 입력했다면 touchDigit(_:)이 호출되어 userIsInTheMiddleOfTyping 이 true 가 됐음
         if userIsInTheMiddleOfTyping {
             brain.setOperand(operand: valueInDisplay)
+            userIsInTheMiddleOfTyping = false
         }
         
         // 연산자를 누르면 디스플레이에 0 표시
