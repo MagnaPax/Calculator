@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var calculatedResult: [String?] = []
     private var unwrappedTouchedKey: String = ""
-    private var mathematicalSymbol: String = ""
     private let textCurrentlyInDisplay: String = ""
     private var userIsInTheMiddleOfTyping = false
     
@@ -80,13 +79,16 @@ class ViewController: UIViewController {
     @IBAction func performOperation(_ sender: UIButton) {
         // 사용자가 숫자를 입력했다면 touchDigit(_:)이 호출되어 userIsInTheMiddleOfTyping 이 true 가 됐음
         if userIsInTheMiddleOfTyping {
-            print("사용자가 이미 값을 입력해서 레이블에 값이 있음")
             brain.setOperand(operand: valueInDisplay)
         }
         
         // 연산자를 누르면 디스플레이에 0 표시
         displayLabel.text = "0"
-
+        if let mathematicalOperation = sender.currentTitle {
+            brain.performOperation(operation: mathematicalOperation)
+        }
+        
+        
 //        if let touchedOperation = sender.currentTitle {
 //            mathematicalSymbol = touchedOperation
 //            displayLabel.text = mathematicalSymbol

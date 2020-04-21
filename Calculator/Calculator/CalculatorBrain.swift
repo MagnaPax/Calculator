@@ -16,11 +16,12 @@ class CalculatorBrain {
     // 피연산자 처리
     func setOperand(operand: Double) {
         result = operand
-        print("사용자가 지금까지 입력한 값은: \n\(result)")
+        print("사용자가 지금까지 입력한 값은:\n\(result)")
     }
     
     // 연산자 처리
-    func performOperation() {
+    func performOperation(operation: String) {
+        print("사용자가 입력한 연산자는:\n\(operation)")
         
     }
     
