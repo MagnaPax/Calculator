@@ -63,8 +63,23 @@ class ViewController: UIViewController {
     }
     
     
-    
-    
+    // 계산 결과를 디스플레이에 넣어주거나 디스플레이에 있는 값을 밖으로 빼내올 때마다 String <-> Double 로 변환해야 되기 때문에
+    private var valueInDisplay: Double {
+        get {
+            if let textCurrentlyInDisplay = displayLabel.text {
+                unwrappedTouchedKey = textCurrentlyInDisplay
+            }
+            else {
+                fatalError("레이블에 아무것도 없음")
+            }
+            // 레이블에 값이 없는경우를 이미 에러처리 했기 때문에 강제 언래핑
+            return Double(unwrappedTouchedKey)!
+        }
+        
+        set {
+            displayLabel.text = String(newValue)
+        }
+    }
     
     
     override func viewDidLoad() {
