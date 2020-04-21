@@ -58,12 +58,11 @@ class ViewController: UIViewController {
         if let touchedOperation = sender.currentTitle {
             mathematicalSymbol = touchedOperation
             displayLabel.text = mathematicalSymbol
-            
         }
     }
     
     
-    // 계산 결과를 디스플레이에 넣어주거나 디스플레이에 있는 값을 밖으로 빼내올 때마다 String <-> Double 로 변환해야 되기 때문에
+    // 디스플레이의 값을 가져오거나 값을 넣을때마다 String <-> Double 로 매번 변환해줘야 되기 때문에
     private var valueInDisplay: Double {
         get {
             if let textCurrentlyInDisplay = displayLabel.text {
