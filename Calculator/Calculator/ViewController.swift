@@ -20,6 +20,25 @@ class ViewController: UIViewController {
     private var userIsInTheMiddleOfTyping = false
     
     
+    // 디스플레이의 값을 가져오거나 값을 넣을때마다 String <-> Double 로 매번 변환해줘야 되기 때문에
+    private var valueInDisplay: Double {
+        get {
+            if let textCurrentlyInDisplay = displayLabel.text {
+                unwrappedTouchedKey = textCurrentlyInDisplay
+            }
+            else {
+                fatalError("레이블에 아무것도 없음")
+            }
+            // 레이블에 값이 없는경우를 이미 에러처리 했기 때문에 강제 언래핑
+            return Double(unwrappedTouchedKey)!
+        }
+        
+        set {
+            displayLabel.text = String(newValue)
+        }
+    }
+    
+    
     //MARK: Actions
     @IBAction func touchDigit(_ sender: UIButton) {
         
@@ -54,31 +73,28 @@ class ViewController: UIViewController {
     }
     
     
+    // 컨트롤러가 모델에 접근하기 위해 인스턴스 생성
+    private let brain = CalculatorBrain()
+    
+    
     @IBAction func performOperation(_ sender: UIButton) {
-        if let touchedOperation = sender.currentTitle {
-            mathematicalSymbol = touchedOperation
-            displayLabel.text = mathematicalSymbol
-        }
-    }
-    
-    
-    // 디스플레이의 값을 가져오거나 값을 넣을때마다 String <-> Double 로 매번 변환해줘야 되기 때문에
-    private var valueInDisplay: Double {
-        get {
-            if let textCurrentlyInDisplay = displayLabel.text {
-                unwrappedTouchedKey = textCurrentlyInDisplay
-            }
-            else {
-                fatalError("레이블에 아무것도 없음")
-            }
-            // 레이블에 값이 없는경우를 이미 에러처리 했기 때문에 강제 언래핑
-            return Double(unwrappedTouchedKey)!
+        // 사용자가 숫자를 입력했다면 touchDigit(_:)이 호출되어 userIsInTheMiddleOfTyping 이 true 가 됐음
+        if userIsInTheMiddleOfTyping {
+            print("사용자가 이미 값을 입력해서 레이블에 값이 있음")
+            brain.setOperand(operand: valueInDisplay)
         }
         
-        set {
-            displayLabel.text = String(newValue)
-        }
+        // 연산자를 누르면 디스플레이에 0 표시
+        displayLabel.text = "0"
+
+//        if let touchedOperation = sender.currentTitle {
+//            mathematicalSymbol = touchedOperation
+//            displayLabel.text = mathematicalSymbol
+//        }
     }
+    
+    
+
     
     
     override func viewDidLoad() {

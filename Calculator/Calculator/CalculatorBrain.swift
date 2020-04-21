@@ -11,9 +11,12 @@ import Foundation
 
 class CalculatorBrain {
     
+    var result: Double = 0.0
+    
     // 피연산자 처리
-    func setOperand() {
-        
+    func setOperand(operand: Double) {
+        result = operand
+        print("사용자가 지금까지 입력한 값은: \n\(result)")
     }
     
     // 연산자 처리
@@ -25,5 +28,5 @@ class CalculatorBrain {
         return op1 * op2
     }
     
-    var result: Double = 0.0
+    
 }
