@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     //MARK: Properties
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
                 fatalError("레이블에 아무것도 없음")
             }
         }
-        // 입력하는 도중이 아닌 처음 입력하는 경우는 입력값을 그대로 레이블에 출력
+            // 입력하는 도중이 아닌 처음 입력하는 경우는 입력값을 그대로 레이블에 출력
         else {
             displayLabel.text = unwrappedTouchedKey
         }
@@ -75,26 +75,33 @@ class ViewController: UIViewController {
     // 컨트롤러가 모델에 접근하기 위해 인스턴스 생성
     private let brain = CalculatorBrain()
     
-    
+ 
     @IBAction func performOperation(_ sender: UIButton) {
-        // 사용자가 숫자를 입력했다면 touchDigit(_:)이 호출되어 userIsInTheMiddleOfTyping 이 true 가 됐음
-        if userIsInTheMiddleOfTyping {
-            brain.setOperand(operand: valueInDisplay)
-            userIsInTheMiddleOfTyping = false
+//
+//        // 사용자가 숫자를 입력했다면 touchDigit(_:)이 호출되어 userIsInTheMiddleOfTyping 이 true 가 됐음
+//        if userIsInTheMiddleOfTyping {
+//            brain.setOperand(operand: valueInDisplay)
+//            userIsInTheMiddleOfTyping = false
+//        }
+//
+//        // 연산자를 누르면 디스플레이에 0 표시
+//        displayLabel.text = "0"
+//        if let mathematicalOperation = sender.currentTitle {
+//            brain.performOperation(operation: mathematicalOperation)
+//        }
+        
+        if let mathematicalOperation = sender.currentTitle {
+            brain.arithmetic(operand: valueInDisplay, operation: mathematicalOperation)
         }
         
-        // 연산자를 누르면 디스플레이에 0 표시
-        displayLabel.text = "0"
-        if let mathematicalOperation = sender.currentTitle {
-            brain.performOperation(operation: mathematicalOperation)
-        }
+
         
         // 계산이 완료된 값을 디스플레이에 표시
         valueInDisplay = brain.result
     }
     
     
-
+    
     
     
     override func viewDidLoad() {
