@@ -41,18 +41,21 @@ class CalculatorBrain {
     func arithmetic(operand: Double, operation: String) {
         if accumulator == nil {
             accumulator = operand
+            print("처음 입력:\n현재값: \(operand) 현재연산자: \(operation) 이전연산자: \(preOperation) 누적값: \(accumulator)")
         }
         else {
+
             switch preOperation {
             case "+":
                 accumulator = accumulator! + operand
             case "-":
                 accumulator = accumulator! - operand
-            case "*":
+            case "×":
                 accumulator = accumulator! * operand
             case "/":
                 accumulator = accumulator! / operand
             default:
+                
                 break
             }
             
@@ -61,7 +64,10 @@ class CalculatorBrain {
                 result = accumulator!
                 return
             }
+            print("현재값: \(operand) 연산자: \(operation) 이전연산자: \(preOperation) 누적값: \(accumulator)")
         }
+        
+
         
         preOperation = operation
         result = 0

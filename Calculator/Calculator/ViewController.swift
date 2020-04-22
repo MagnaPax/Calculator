@@ -92,6 +92,8 @@ class ViewController: UIViewController {
         
         if let mathematicalOperation = sender.currentTitle {
             brain.arithmetic(operand: valueInDisplay, operation: mathematicalOperation)
+            // 새로운 값을 입력받아야 되기 때문
+            userIsInTheMiddleOfTyping = false
         }
         
 
