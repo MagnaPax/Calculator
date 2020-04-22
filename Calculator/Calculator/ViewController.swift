@@ -9,18 +9,35 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     //MARK: Properties
-    @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    private var calculatedResult: [String?] = []
     private var unwrappedTouchedKey: String = ""
-    private let textCurrentlyInDisplay: String = ""
     private var userIsInTheMiddleOfTyping = false
     
     
+    // 디스플레이의 값을 가져오거나 값을 넣을때마다 String <-> Double 로 매번 변환해줘야 되기 때문에
+    private var valueInDisplay: Double {
+        get {
+            if let textCurrentlyInDisplay = displayLabel.text {
+                unwrappedTouchedKey = textCurrentlyInDisplay
+            }
+            else {
+                fatalError("레이블에 아무것도 없음")
+            }
+            // 레이블에 값이 없는경우를 이미 에러처리 했기 때문에 강제 언래핑
+            return Double(unwrappedTouchedKey)!
+        }
+        
+        set {
+            displayLabel.text = String(newValue)
+        }
+    }
+    
+    
     //MARK: Actions
-    @IBAction func touchKeypad(_ sender: UIButton) {
+    @IBAction func touchDigit(_ sender: UIButton) {
         
         // 어떤 버튼 눌렸는지 찾기
         if let touchedKey = sender.currentTitle {
@@ -34,16 +51,16 @@ class ViewController: UIViewController {
         
         // 사용자가 키패드에 입력중이면 이미 레이블에 있는 값에 현재 입력된 값을 누적해서 레이블에 표시
         if userIsInTheMiddleOfTyping {
-            if let textCurrentlyInDisplay = display.text {
-                display.text = textCurrentlyInDisplay + unwrappedTouchedKey
+            if let textCurrentlyInDisplay = displayLabel.text {
+                displayLabel.text = textCurrentlyInDisplay + unwrappedTouchedKey
             }
             else {
                 fatalError("레이블에 아무것도 없음")
             }
         }
-        // 입력하는 도중이 아닌 처음 입력하는 경우는 입력값을 그대로 레이블에 출력
+            // 입력하는 도중이 아닌 처음 입력하는 경우는 입력값을 그대로 레이블에 출력
         else {
-            display.text = unwrappedTouchedKey
+            displayLabel.text = unwrappedTouchedKey
         }
         
         // touchKeypad(_:) 메소드는 키패드를 눌렀을 때 호출되므로 변수 값을 true로 바꿈
@@ -53,7 +70,22 @@ class ViewController: UIViewController {
     }
     
     
+    // 컨트롤러가 모델에 접근하기 위해 인스턴스 생성
+    private let brain = CalculatorBrain()
     
+ 
+    @IBAction func performOperation(_ sender: UIButton) {
+
+        
+        if let mathematicalOperation = sender.currentTitle {
+            brain.arithmetic(operand: valueInDisplay, operation: mathematicalOperation)
+            // 새로운 값을 입력받아야 되기 때문
+            userIsInTheMiddleOfTyping = false
+        }
+        
+        // 계산이 완료된 값을 디스플레이에 표시
+        valueInDisplay = brain.result
+    }
     
     
     
